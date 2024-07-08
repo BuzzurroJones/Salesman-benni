@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.lang.Math;
 
 public class Square {
     public int owner;
     public int distance;
     public ArrayList<Integer> distances = new ArrayList<>();
-    private int ROW;
-    private int COLUMN;
+    private final int ROW;
+    private final int COLUMN;
 
     public Square(int sellers, int row, int column) {
         for (int i = 0; i < sellers; i++) {

@@ -1,13 +1,13 @@
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class GridDisplay {
-    private ArrayList<ArrayList<Square>> grid;
-    private int rows;
-    private int cols;
+    private final ArrayList<ArrayList<Square>> grid;
+    private final int rows;
+    private final int cols;
     private ArrayList<int[]> sellers;
     private HashMap<Integer, Color> playerColors;
     private JPanel gridPanel;
@@ -28,12 +28,12 @@ public class GridDisplay {
         playerColors.put(1, Color.RED);
         playerColors.put(2, Color.GREEN);
         playerColors.put(3, Color.YELLOW);
-        playerColors.put(4, Color.BLACK);
+        playerColors.put(4, Color.DARK_GRAY);
         playerColors.put(5, Color.PINK);
         playerColors.put(6, Color.CYAN);
         playerColors.put(7, Color.MAGENTA);
         playerColors.put(8, Color.GRAY);
-        playerColors.put(9, Color.DARK_GRAY);
+        playerColors.put(9, Color.BLACK);
     }
 
     public void createAndShowGUI() {
