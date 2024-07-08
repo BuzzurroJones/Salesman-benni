@@ -2,17 +2,24 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class main {
-    private ArrayList<ArrayList<Square>> board = new ArrayList<>();
-    private ArrayList<int[]> sellers = new ArrayList<>();
+    private final ArrayList<ArrayList<Square>> board = new ArrayList<>();
+    private final ArrayList<int[]> sellers = new ArrayList<>();
     private int seller = 0;
-    private int size;
+    private final int size;
 
     public main(int sellersNum, int size) {
         this.size = size;
         Random rand = new Random();
-        for (int i = 0; i < sellersNum; i++) {
-            int[] seller = { rand.nextInt(size), rand.nextInt(size) };
-            sellers.add(seller);
+        if(sellersNum > 2){ for (int i = 0; i < sellersNum; i++) {
+            int[] newseller = { rand.nextInt(size), rand.nextInt(size) };
+            sellers.add(newseller);
+        }}
+        else{
+            int[] tempSeller = {1,4};
+            int[] seller2 = {9,9};
+            sellers.add(tempSeller);
+            sellers.add(seller2);
+
         }
         for (int i = 0; i < size; i++) {
             ArrayList<Square> NewColumn = new ArrayList<>();
@@ -42,11 +49,11 @@ public class main {
         int sellerColumn = sellers.get(currentSeller)[1];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                int[] seller = { i, j };
+                int[] newseller = { i, j };
                 int newOwned = 0;
                 for (int w = 0; w < size; w++) {
                     for (int z = 0; z < size; z++) {
-                        if (board.get(w).get(z).distance > board.get(w).get(z).getDistance(seller)) {
+                        if (board.get(w).get(z).distance > board.get(w).get(z).getDistance(newseller)) {
                             newOwned++;
                         }
                     }
