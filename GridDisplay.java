@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GridDisplay {
-    private ArrayList<ArrayList<Cell>> grid;
+    private ArrayList<ArrayList<Square>> grid;
     private int rows;
     private int cols;
     private ArrayList<int[]> sellers;
@@ -14,10 +14,10 @@ public class GridDisplay {
     private JTable playerTable;
     private JFrame frame;
 
-    public GridDisplay(ArrayList<ArrayList<Cell>> grid, ArrayList<int[]> sellers, int rows, int cols) {
+    public GridDisplay(ArrayList<ArrayList<Square>> grid, ArrayList<int[]> sellers, int size) {
         this.grid = grid;
-        this.rows = rows;
-        this.cols = cols;
+        this.rows = size;
+        this.cols = size;
         this.sellers = sellers;
         initializePlayerColors();
     }
@@ -61,11 +61,11 @@ public class GridDisplay {
             }
         };
         JScrollPane tableScrollPane = new JScrollPane(playerTable);
-        tableScrollPane.setPreferredSize(new Dimension(200, 150)); // Set preferred size for table
+        tableScrollPane.setPreferredSize(new Dimension(200, 150));
 
         frame.add(tableScrollPane, BorderLayout.SOUTH);
 
-        frame.setSize(800, 600); // Adjust the size as needed
+        frame.setSize(1000, 800);
         frame.setVisible(true);
     }
 
@@ -82,7 +82,7 @@ public class GridDisplay {
         if (owner == sellers.size()) {
             return Color.WHITE;
         }
-        return playerColors.getOrDefault(owner, Color.GRAY); // Fallback color
+        return playerColors.getOrDefault(owner, Color.GRAY);
     }
 
     public void refresh(ArrayList<int[]> newSellers) {
@@ -91,7 +91,7 @@ public class GridDisplay {
 
         // Update player positions table
         DefaultTableModel model = (DefaultTableModel) playerTable.getModel();
-        model.setRowCount(0); // Clear previous data
+        model.setRowCount(0);
         for (int i = 0; i < sellers.size(); i++) {
             model.addRow(new Object[] { "Player " + (i + 1), sellers.get(i)[0], sellers.get(i)[1] });
         }
@@ -108,7 +108,7 @@ public class GridDisplay {
 
                 if (isPlayerCell(i, j)) {
                     JLabel label = new JLabel("P");
-                    label.setFont(new Font("Arial", Font.BOLD, 20)); // Make the "P" bigger
+                    label.setFont(new Font("Arial", Font.BOLD, 20));
                     label.setHorizontalAlignment(SwingConstants.CENTER);
                     label.setVerticalAlignment(SwingConstants.CENTER);
                     cellPanel.setLayout(new BorderLayout());

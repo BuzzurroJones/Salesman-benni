@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class main {
-    public ArrayList<ArrayList<Cell>> board = new ArrayList<>();
-    public ArrayList<int[]> sellers = new ArrayList<>();
-    public int seller = 0;
-    public int size;
+    private ArrayList<ArrayList<Square>> board = new ArrayList<>();
+    private ArrayList<int[]> sellers = new ArrayList<>();
+    private int seller = 0;
+    private int size;
 
     public main(int sellersNum, int size) {
         this.size = size;
@@ -15,9 +15,9 @@ public class main {
             sellers.add(seller);
         }
         for (int i = 0; i < size; i++) {
-            ArrayList<Cell> NewColumn = new ArrayList<>();
+            ArrayList<Square> NewColumn = new ArrayList<>();
             for (int j = 0; j < size; j++) {
-                Cell s = new Cell(sellersNum, i, j);
+                Square s = new Square(sellersNum, i, j);
                 NewColumn.add(s);
             }
             board.add(NewColumn);
@@ -69,5 +69,21 @@ public class main {
         if (seller == sellers.size()) {
             seller = 0;
         }
+    }
+
+    public ArrayList<ArrayList<Square>> getBoard() {
+        return board;
+    }
+
+    public ArrayList<int[]> getSellers() {
+        return sellers;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getSeller() {
+        return seller;
     }
 }

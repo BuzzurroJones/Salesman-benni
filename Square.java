@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.lang.Math;
 
-public class Cell {
+public class Square {
     public int owner;
     public int distance;
     public ArrayList<Integer> distances = new ArrayList<>();
     private int ROW;
     private int COLUMN;
 
-    public Cell(int sellers, int row, int column) {
+    public Square(int sellers, int row, int column) {
         for (int i = 0; i < sellers; i++) {
             distances.add(0);
         }
